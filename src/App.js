@@ -1,14 +1,14 @@
 import React from 'react';
 
-class App extends React.Component {
-  render() {
+import Login from './pages/Login';
+import Routes from './routes';
 
-    return (
-      <div className="App">
-        oi
-      </div>
-    )
-  } 
+function App() {
+  return (
+    <>
+      <Login />
+    </>
+  )
 }
 
 export default App;
