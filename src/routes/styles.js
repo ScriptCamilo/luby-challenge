@@ -8,15 +8,10 @@ export const Container = styled.div`
   height: 100vh;
 `;
 
-export const MainPage = styled.main`
-  display: flex;
-  flex-direction: column;
-  color: white;
-
-  height: 90%;
-`;
-
 export const NavBar = styled.nav`
+  position: fixed;
+  bottom: 0;
+
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -25,6 +20,7 @@ export const NavBar = styled.nav`
 
   border-radius: 20px 20px 0 0;
 
+  width: 100%;
   height: 10%;
 `;
 

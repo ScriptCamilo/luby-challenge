@@ -42,11 +42,9 @@ const routes = [
 function Routes() {
   return (
     <Container>
-      <MainPage>
-        <Switch>
-          {routes.map((route, index) => <Route key={index}  { ...route } />)}
-        </Switch>
-      </MainPage>
+      <Switch>
+        {routes.map((route, index) => <Route key={index}  { ...route } />)}
+      </Switch>
 
       <NavBar> 
         <NavIcon to="/">
