@@ -11,9 +11,13 @@ export const getUserInfo = async (user) => {
 
 export const getUserApis = async (api) => {
   const resposne = await fetch(api);
-  const repos = await resposne.json();
+  const data = await resposne.json();
 
-  return repos;
+  if (data.message && (data.message.toLowerCase() === 'not found')) {
+    throw new Error('Problema ao se conectar com o servidor');
+  }
+
+  return data;
 } 
 
 // const Info = { 

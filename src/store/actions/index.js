@@ -1,4 +1,4 @@
-import { getUserInfo } from '../../service/githubApi';
+import { getUserInfo, getUserApis } from '../../service/githubApi';
 
 const GET_USER = 'GET_USER';
 const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
@@ -42,6 +42,9 @@ const getUserThunk = (user) => async (dispatch) => {
     dispatch(getUser());
     const data = await getUserInfo(user);
     dispatch(getUserSuccess(data));
+    
+    const repos = await getUserApis(data.repos_url);
+    dispatch(getUserRepos(repos));
 
   } catch (error) {
     console.log(error);
