@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { FiArrowRight } from 'react-icons/fi'
+import { useDispatch } from 'react-redux';
+import { FiArrowRight } from 'react-icons/fi';
+import getUserThunk from '../../store/actions';
 
 import { Container, Logo, UserName, Required, Button, LoginSection } from './styles';
 
 function Login()  {
   const [userName, setUserName] = useState('');
   const [isEmpty, setIsEmpty] = useState(false);
+  const dispatch = useDispatch();
 
   const handleChange = ({target: { value }}, setState) => {
     setState(value)
@@ -18,7 +21,7 @@ function Login()  {
     if (userName === '') {
       return setIsEmpty(true);
     }
-
+    dispatch(getUserThunk(userName));
     setIsEmpty(false);
   }
 
