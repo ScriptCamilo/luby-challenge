@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const Header = styled.header`
+export const Container = styled.header`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -31,7 +31,7 @@ export const Header = styled.header`
 `;
 
 export const Log = styled(Link).attrs(() => ({
-  to: '/',
+  to: '/login',
 }))`
   display: flex;
   justify-content: center;
@@ -45,8 +45,8 @@ export const Log = styled(Link).attrs(() => ({
 
 export const Image = styled.figure`    
   img {
-    height: 6.5rem;
-    width: 6.5rem;
+    height: 7rem;
+    width: 7rem;
     border-radius: 100%;
     border: 3px solid white;
   }

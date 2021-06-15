@@ -7,21 +7,22 @@ import {
   Repos,
  } from './styles';
 
-function Numbers() {
+function Numbers({ followers, following, repos }) {
+
   return (
     <Container>
       <Followers>
-        <h2>32</h2>
+        <h2>{followers}</h2>
         <span>Seguidores</span>
       </Followers>
       
       <Following>
-        <h2>32</h2>
+        <h2>{following}</h2>
         <span>Seguindo</span>
       </Following>
 
       <Repos>
-        <h2>10</h2>
+        <h2>{repos}</h2>
         <span>Repos</span>
       </Repos>
     </Container>

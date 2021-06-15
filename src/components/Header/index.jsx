@@ -1,13 +1,13 @@
 import React from 'react';
 import { FiLogOut, FiLogIn, FiArrowLeft } from 'react-icons/fi';
 
-import { Header, Log, Image } from './styles';
+import { Container, Log, Image } from './styles';
 
-function User() {
+function Header({ username, avatar_url }) {
   return (
-    <Header>
+    <Container>
       <section>
-        <span>#ScriptCamilo</span>
+        <span>#{username}</span>
         
         <Log>
           <span>Sair</span>
@@ -16,10 +16,10 @@ function User() {
       </section>
 
       <Image>
-        <img src="https://avatars.githubusercontent.com/u/43912333?v=4"/>
+        <img src={avatar_url} alt={username} />
       </Image>
-    </Header>
+    </Container>
   )
 }
 
-export default User;
+export default Header;
