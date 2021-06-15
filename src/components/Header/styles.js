@@ -15,6 +15,7 @@ export const Container = styled.header`
   height: ${({ profile }) => profile === 'true' ? '8rem' : ''};
 
   padding: 1.1rem;
+  margin-bottom: 1rem;
 
   & > span {
     font-weight: 700;
