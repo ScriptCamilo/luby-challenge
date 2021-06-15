@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
+  align-items: ${({alignItems}) => alignItems || ''};
 
   margin: 3rem 1rem;
 

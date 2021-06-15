@@ -1,11 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
 import { Container } from './styles';
 
-function InfoCard({ children }) {
+function InfoCard({ children, alignItems }) {
   return (
-    <Container>
+    <Container alignItems={alignItems} >
       <div />
       <section>
         {children}

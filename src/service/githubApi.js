@@ -1,5 +1,5 @@
-export const getUserInfo = async (user) => {
-  const response = await fetch(`https://api.github.com/users/${user}`);
+export const getUserInfo = async (userName) => {
+  const response = await fetch(`https://api.github.com/users/${userName}`);
   const infos = await response.json();
 
   if (infos.message && (infos.message.toLowerCase() === 'not found')) {
@@ -9,8 +9,8 @@ export const getUserInfo = async (user) => {
   return infos;
 }
 
-export const getUserApis = async (api) => {
-  const resposne = await fetch(api);
+export const getUserApis = async (userName, params) => {
+  const resposne = await fetch(`https://api.github.com/users/${userName}/${params}`);
   const data = await resposne.json();
 
   if (data.message && (data.message.toLowerCase() === 'not found')) {

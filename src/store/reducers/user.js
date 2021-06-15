@@ -1,3 +1,5 @@
+import { USER, USER_SUCCESS, USER_ERROR } from '../actions/user';
+
 const INITIAL_STATE = {
   isLoading: false,
   error: null,
@@ -5,18 +7,18 @@ const INITIAL_STATE = {
 
 function user(state = INITIAL_STATE, {type, payload}) {
   switch(type) {
-    case 'GET_USER':
+    case USER:
       return {
         ...state,
         isLoading: true,
       };
-    case 'GET_USER_SUCCESS':
+    case USER_SUCCESS:
       return {
         ...state,
         ...payload,
         isLoading: false,
       };
-    case 'GET_USER_ERROR':
+    case USER_ERROR:
       return {
         ...state,
         error: payload,

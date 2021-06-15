@@ -16,14 +16,15 @@ import {
 } from './styles';
 
 function Repos() {
-  const { repos } = useSelector(state => state);
+  const { user: { public_repos }, repos } = useSelector(state => state);
   const reposCount = repos.length;
   const iconsSize = '1.3rem';
 
   return (
     <MainPage>
       <Header
-        reposCount={reposCount}
+        local="Repositórios"
+        count={public_repos}
       />
       
       {repos.map(({ name, description, stargazers_count}, index) => (

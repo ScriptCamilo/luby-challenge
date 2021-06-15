@@ -4,6 +4,7 @@ export const MainPage = styled.main`
   display: flex;
   flex-direction: column;
   color: white;
+  font-family: 'Roboto', sans-serif;
 
   padding-bottom: 20%;
 `;
@@ -11,7 +12,6 @@ export const MainPage = styled.main`
 export const Title = styled.h2`
   padding: 0 1rem;
   margin: 0.2rem;
-  font-family: 'Roboto', sans-serif;
   font-weight: 700;
   font-size: 1.6rem;
 `;

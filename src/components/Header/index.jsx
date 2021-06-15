@@ -3,7 +3,7 @@ import { FiLogOut, FiLogIn, FiArrowLeft } from 'react-icons/fi';
 
 import { Container, Log, Image } from './styles';
 
-function Header({ username, avatarUrl, reposCount, back, profile }) {
+function Header({ username, avatarUrl, count, back, profile, local }) {
   const styleProps = {profile, back}
 
   return (
@@ -47,7 +47,7 @@ function Header({ username, avatarUrl, reposCount, back, profile }) {
               <FiArrowLeft size={'1.5rem'} />
             </Log>
             
-            <span>{reposCount} Repositórios</span>
+            <span>{count} {local}</span>
             
             <div />
           </>
