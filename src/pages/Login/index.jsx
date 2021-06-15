@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { FiArrowRight } from 'react-icons/fi';
 import getUserThunk from '../../store/actions';
@@ -8,10 +9,11 @@ import { Container, Logo, UserName, Required, Button, LoginSection } from './sty
 function Login()  {
   const [userName, setUserName] = useState('');
   const [isEmpty, setIsEmpty] = useState(false);
+  const history = useHistory();
   const dispatch = useDispatch();
 
-  const handleChange = ({target: { value }}, setState) => {
-    setState(value)
+  const handleChange = ({target: { value }}) => {
+    setUserName(value)
     setIsEmpty(false);
   }
 
@@ -21,8 +23,9 @@ function Login()  {
     if (userName === '') {
       return setIsEmpty(true);
     }
+    setUserName('');
     dispatch(getUserThunk(userName));
-    setIsEmpty(false);
+    history.push('/');
   }
 
   return (
@@ -33,7 +36,7 @@ function Login()  {
         <UserName isEmpty={isEmpty}>
           <input 
             value={userName} 
-            onChange={(event) => handleChange(event, setUserName)}
+            onChange={(event) => handleChange(event)}
             type='text'
             placeholder='Usuário'
           />

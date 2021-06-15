@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
 
-  margin: 2rem 0;
+  margin: 3.5rem 0;
 
   div {
     border-right: 10px solid #FFCE00;
