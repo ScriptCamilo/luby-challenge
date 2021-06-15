@@ -1,15 +1,13 @@
-import { GET_USER_FOLLOWING } from '../actions';
+import { USER_FOLLOWING } from '../actions/following';
 
 const INITIAL_STATE = [];
 
-function following(state = INITIAL_STATE, action) {
-  switch(action.type) {
-    case 'NEW_USER': {
-      return action.payload.user;
-    }
-    default: {
+function following(state = INITIAL_STATE, { type, payload }) {
+  switch(type) {
+    case USER_FOLLOWING:
+      return payload;
+    default:
       return state;
-    }
   }
 }
 
