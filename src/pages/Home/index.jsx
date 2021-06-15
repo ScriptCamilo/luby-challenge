@@ -27,7 +27,8 @@ function Home() {
     <MainPage>
       <Header 
         username={login}
-        avatar_url={avatar_url}
+        avatarUrl={avatar_url}
+        profile="true"
       />
 
       <InfoCard>
