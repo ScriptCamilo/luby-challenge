@@ -3,21 +3,56 @@ import { FiLogOut, FiLogIn, FiArrowLeft } from 'react-icons/fi';
 
 import { Container, Log, Image } from './styles';
 
-function Header({ username, avatar_url }) {
-  return (
-    <Container>
-      <section>
-        <span>#{username}</span>
-        
-        <Log>
-          <span>Sair</span>
-          <FiLogOut size={'1.5rem'} color="#D03434" />
-        </Log>
-      </section>
+function Header({ username, avatarUrl, reposCount, back, profile }) {
+  const styleProps = {profile, back}
 
-      <Image>
-        <img src={avatar_url} alt={username} />
-      </Image>
+  return (
+    <Container {...styleProps}>
+      {
+        profile ? (
+          <>
+            {
+              back ? (
+                <Log justifycontent="flex-start" >
+                  <FiArrowLeft size={'1.5rem'} />
+                </Log>
+              ) 
+              : <span>#{username}</span>
+            }
+
+            <Image {...styleProps} >
+              {back ? <span>#{username}</span> : null}
+              <img src={avatarUrl} alt={username} />
+            </Image>
+
+            {
+              back ? (
+                <Log>
+                  <span>Salvar</span>
+                  <FiLogOut size={'1.5rem'} color="#5CBC29 " />
+                </Log>
+              )
+              : (
+                <Log>
+                  <span>Sair</span>
+                  <FiLogIn size={'1.5rem'} color="#D03434" />
+                </Log>
+              )
+            }
+          </>
+        ) 
+        : (
+          <>
+            <Log justifycontent="flex-start">
+              <FiArrowLeft size={'1.5rem'} />
+            </Log>
+            
+            <span>{reposCount} Repositórios</span>
+            
+            <div />
+          </>
+        )
+      }
     </Container>
   )
 }
