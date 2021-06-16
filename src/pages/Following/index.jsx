@@ -28,7 +28,7 @@ function Following() {
           <InfoCard alignItems="center">
             <Image>
               <img src={avatar_url} alt={login} />
-              <Log>
+              <Log to={`following/${login}`}>
                 <span>#{login}</span>
                 <FiArrowRight size="1.5rem" />
               </Log>

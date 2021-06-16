@@ -1,53 +1,37 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { FiMail, FiMapPin, FiBriefcase } from 'react-icons/fi';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-// import HomeHeader from './components/HomeHeader';
+import { getUserInfo } from '../../../service/githubApi';
 
-import InfoCard from '../../../components/InfoCard';
-import Numbers from '../../../components/Numbers';
+import { MainPage } from './styles';
 
-import { MainPage, Title, Description } from './styles';
+import UserProfile from '../../../components/UserProfile';
+import Loading from '../../../components/Loading';
 
 function FollowingProfile() {
-  const { 
-    login,
-    avatar_url,
-    name,
-    bio,
-    followers,
-    following,
-    public_repos,
-    email,
-    location,
-    company,
-  } = useSelector(({user}) => user);
+  const [userStatus, setUserStatus] = useState({isLoading: true, userInfo: {}})
+  const { login } = useParams();
 
+  useEffect(() => {
+    const fetchApi = async () => {
+      try {
+        setUserStatus({isLoading: true, userInfo: {}});
+        const userInfo = await getUserInfo(login);
+        setUserStatus({isLoading: false, userInfo})
+        
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetchApi();
+  }, [login]);
+  
+  if (userStatus.isLoading) return <Loading />
 
   return (
     <MainPage>
-      <HomeHeader 
-        username={login}
-        avatarUrl={avatar_url}
-      />
-
-      <InfoCard>
-        <Title>{name}</Title>
-        {email ? <Description> <FiMail /> <span>{email}</span></Description> : null}
-        {location ? <Description> <FiMapPin /> <span>{location}</span></Description> : null}
-        {company ? <Description> <FiBriefcase /> <span>{company}</span></Description> : null}
-      </InfoCard>
-
-      <Numbers
-        followers={followers}
-        following={following}
-        repos={public_repos}
-      />
-
-      <InfoCard>
-        <Title>BIO</Title>
-        <Description>{bio}</Description>
-      </InfoCard>
+      <UserProfile userInfo={ userStatus.userInfo } />
     </MainPage>
   );
 }

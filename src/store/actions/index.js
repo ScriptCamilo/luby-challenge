@@ -1,10 +1,17 @@
 import { getUserInfo, getUserApis } from '../../service/githubApi';
-import { requestUser, getUserSuccess, getUserError } from './user';
-import { getUserRepos } from './repos';
-import { getUserFollowers } from './followers';
-import { getUserFollowing } from './following';
+import { requestUser, userLogout, getUserSuccess, getUserError } from './user';
+import { getUserRepos, resetRepos } from './repos';
+import { getUserFollowers, resetFollowers } from './followers';
+import { getUserFollowing, resetFollowing } from './following';
 
-const getUserThunk = (userName) => async (dispatch) => {
+export const resetUser = () => (dispatch) => {
+  dispatch(userLogout());
+  dispatch(resetRepos());
+  dispatch(resetFollowers());
+  dispatch(resetFollowing());
+}
+
+export const getUserThunk = (userName) => async (dispatch) => {
   dispatch(requestUser());
   try {
     const data = await getUserInfo(userName);
@@ -24,5 +31,3 @@ const getUserThunk = (userName) => async (dispatch) => {
     dispatch(getUserError('Usuário não encontrado'));
   }
 };
-
-export default getUserThunk;
