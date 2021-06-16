@@ -25,11 +25,10 @@ export const Image = styled.figure`
   }
 `;
 
-export const Log = styled(Link).attrs(({ justifycontent }) => ({
-  to: '/followers/:login',
-}))`
+export const Log = styled(Link)`
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 
   width: 70%;
 

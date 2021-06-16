@@ -1,15 +1,16 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { FiHome, FiGithub, FiUsers } from 'react-icons/fi'
-import { Route, Switch, useHistory } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
+import Loading from '../components/Loading';
 import Login from '../pages/Login';
 import Home from '../pages/Home';
 import Repos from '../pages/Repos';
 import Followers from '../pages/Followers';
-// import FollowersProfile from '../pages/Followers/FollowerProfile'
+import FollowersProfile from '../pages/Followers/FollowerProfile';
 import Following from '../pages/Following';
-// import FollowingProfile from '../pages/Following/FollowingProfile'
+import FollowingProfile from '../pages/Following/FollowingProfile';
 
 
 import { Container, NavBar, NavIcon } from './styles';
@@ -30,27 +31,29 @@ const routes = [
     exact: true,
     component: Followers,
   },
-  // {
-  //   path: "/followers/:login",
-  //   exact: true,
-  //   component: FollowersProfile,
-  // },
+  {
+    path: "/followers/:login",
+    exact: true,
+    component: FollowersProfile,
+  },
   {
     path: "/following",
     exact: true,
     component: Following,
   },
-  // {
-  //   path: "/following/:login",
-  //   exact: true,
-  //   component: FollowingProfile,
-  // },
+  {
+    path: "/following/:login",
+    exact: true,
+    component: FollowingProfile,
+  },
 ];
 
 function Routes() {
   const { user: { isLoading, auth }} = useSelector((state) => state);
 
   if (!auth) return <Login />;
+
+  if(isLoading) return <Loading />
 
   return (
     <Container>
@@ -59,7 +62,7 @@ function Routes() {
       </Switch>
 
       <NavBar> 
-        <NavIcon to="/">
+        <NavIcon exact to="/">
           <FiHome size='2rem' />
           <span>Home</span>
         </NavIcon>

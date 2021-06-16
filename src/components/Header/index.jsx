@@ -12,9 +12,11 @@ function Header({ children, avatarUrl, count, back, profile, local }) {
     <Container {...styledProps}>
       {children ? children : (
           <>
-            <Link>
-               <FiArrowLeft size={'1.5rem'} />
-            </Link>
+            <div>
+              <Link>
+                <FiArrowLeft size={'1.5rem'} />
+              </Link>
+            </div>
             
              <span>{count} {local}</span>
             

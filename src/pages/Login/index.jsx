@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { FiArrowRight } from 'react-icons/fi';
-import getUserThunk from '../../store/actions';
+
+import { getUserThunk } from '../../store/actions';
 
 import { Container, Logo, UserName, Required, Button, LoginSection } from './styles';
 

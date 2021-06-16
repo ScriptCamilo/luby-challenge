@@ -1,11 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { FiLogIn, FiLogOut, FiArrowLeft } from 'react-icons/fi';
+
+import { getUserThunk, resetUser } from '../../../../store/actions';
 
 import Header from '../../../../components/Header';
 
 function ProfileHeader({ username, avatarUrl, current }) {
+  const dispatch = useDispatch();
   const iconSize = '1.5rem';
+
   return (
     <Header
       profile="true"
@@ -14,9 +19,11 @@ function ProfileHeader({ username, avatarUrl, current }) {
       {
         current ? <span>#{username}</span> 
         : (
-          <Link>
+          <div>
+            <Link>
               <FiArrowLeft size={iconSize} />
-          </Link>
+            </Link>
+          </div>
         ) 
       }
 
@@ -25,22 +32,22 @@ function ProfileHeader({ username, avatarUrl, current }) {
         <img src={avatarUrl} alt={username} />
       </figure>
 
-      <Link>
+      <div>
         {
           current ? (
-            <>
+            <Link onClick={() => dispatch(resetUser())}>
               <span>Sair</span>
               <FiLogOut size={iconSize} color="#D03434" />
-            </>
+            </Link>
           )
           : (
-              <>
+              <Link to="/" onClick={() => dispatch(getUserThunk(username))}>
                 <span>Salvar</span>
                 <FiLogIn size={iconSize} color="#5CBC29" />
-              </>
+              </Link>
             )
         }
-      </Link>
+      </div>
     </Header>
   );
 }

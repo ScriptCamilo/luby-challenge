@@ -30,6 +30,7 @@ export const Container = styled.header`
 
     height: 10rem;
     width: 33.3%;
+
     span {
       font-weight: 700;
     }
@@ -42,20 +43,25 @@ export const Container = styled.header`
     }
   }
 
-  a {
+  div {
     display: flex;
     justify-content: ${({ justifycontent }) => justifycontent || 'flex-end' };
     align-items: center;
 
     width: 33.3%;
 
-    span {
+    a {
+      display: flex;
+      align-items: center;
+    }
+
+    a > span {
       margin-right: 10px;
       font-weight: 300;
     }
   }
 
-  a ~ a {
+  div ~ div {
     justify-content: flex-end;
   }
 
