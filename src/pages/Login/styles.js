@@ -54,9 +54,7 @@ export const UserName = styled.label`
   }
 `;
 
-export const Required = styled.span.attrs(() => ({
-  text: 'Oi',
-}))`
+export const Required = styled.span`
   position: absolute;
   margin-right: 1rem;
 

@@ -1,15 +1,15 @@
-import { GET_USER_FOLLOWERS } from '../actions';
+import { USER_FOLLOWERS, RESET_USER_FOLLOWERS } from '../actions/followers';
 
 const INITIAL_STATE = []
 
-function followers(state = INITIAL_STATE, action) {
-  switch(action.type) {
-    case 'NEW_USER': {
-      return action.payload.user;
-    }
-    default: {
+function followers(state = INITIAL_STATE, { type, payload }) {
+  switch(type) {
+    case USER_FOLLOWERS:
+      return payload;
+    case RESET_USER_FOLLOWERS:
+      return INITIAL_STATE;
+    default:
       return state;
-    }
   }
 }
 

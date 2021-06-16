@@ -1,60 +1,33 @@
 import React from 'react';
-import { FiLogOut, FiLogIn, FiArrowLeft } from 'react-icons/fi';
+import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi';
 
-import { Container, Log, Image } from './styles';
+import { Container } from './styles';
 
-function Header({ username, avatarUrl, reposCount, back, profile }) {
-  const styleProps = {profile, back}
+function Header({ children, count, back, profile, local, history }) {
+  const { goBack } = useHistory();
 
-  return (
-    <Container {...styleProps}>
-      {
-        profile ? (
+  const justifycontent = back || !children ? 'flex-start' : '';
+  const styledProps = {profile, back, justifycontent}
+
+  if (true) return (
+    <Container {...styledProps}>
+      {children ? children : (
           <>
-            {
-              back ? (
-                <Log justifycontent="flex-start" >
-                  <FiArrowLeft size={'1.5rem'} />
-                </Log>
-              ) 
-              : <span>#{username}</span>
-            }
-
-            <Image {...styleProps} >
-              {back ? <span>#{username}</span> : null}
-              <img src={avatarUrl} alt={username} />
-            </Image>
-
-            {
-              back ? (
-                <Log>
-                  <span>Salvar</span>
-                  <FiLogOut size={'1.5rem'} color="#5CBC29 " />
-                </Log>
-              )
-              : (
-                <Log>
-                  <span>Sair</span>
-                  <FiLogIn size={'1.5rem'} color="#D03434" />
-                </Log>
-              )
-            }
-          </>
-        ) 
-        : (
-          <>
-            <Log justifycontent="flex-start">
-              <FiArrowLeft size={'1.5rem'} />
-            </Log>
+            <div>
+              <Link onClick={ goBack }>
+                <FiArrowLeft size={'1.5rem'} />
+              </Link>
+            </div>
             
-            <span>{reposCount} Repositórios</span>
+             <span>{count} {local}</span>
             
-            <div />
+             <div />
           </>
-        )
-      }
+        )}
     </Container>
-  )
+  );
 }
 
 export default Header;

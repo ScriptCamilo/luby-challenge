@@ -1,0 +1,24 @@
+import styled from 'styled-components';
+
+export const Title = styled.h2`
+  padding: 0 1rem;
+  margin: 0.2rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+`;
+
+export const Description = styled(Title).attrs(() => ({
+  as: 'p',
+}))`
+  display: flex;
+  align-items: center;
+  
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 1.4rem;
+
+  span {
+    margin-left: 0.5rem;
+  }
+`;

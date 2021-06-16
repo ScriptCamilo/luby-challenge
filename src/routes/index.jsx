@@ -1,15 +1,19 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { FiHome, FiGithub, FiUsers } from 'react-icons/fi'
 import { Route, Switch } from 'react-router-dom';
 
+import Loading from '../components/Loading';
 import Login from '../pages/Login';
 import Home from '../pages/Home';
 import Repos from '../pages/Repos';
 import Followers from '../pages/Followers';
+import FollowersProfile from '../pages/Followers/FollowerProfile';
 import Following from '../pages/Following';
+import FollowingProfile from '../pages/Following/FollowingProfile';
 
 
-import { Container, MainPage, NavBar, NavIcon } from './styles';
+import { Container, NavBar, NavIcon } from './styles';
 
 const routes = [
   {
@@ -28,18 +32,29 @@ const routes = [
     component: Followers,
   },
   {
+    path: "/followers/:login",
+    exact: true,
+    component: FollowersProfile,
+  },
+  {
     path: "/following",
     exact: true,
     component: Following,
   },
   {
-    path: "/login",
+    path: "/following/:login",
     exact: true,
-    component: Login,
+    component: FollowingProfile,
   },
 ];
 
 function Routes() {
+  const { user: { isLoading, auth }} = useSelector((state) => state);
+
+  if (!auth) return <Login />;
+
+  if(isLoading) return <Loading />
+
   return (
     <Container>
       <Switch>
@@ -47,7 +62,7 @@ function Routes() {
       </Switch>
 
       <NavBar> 
-        <NavIcon to="/">
+        <NavIcon exact to="/">
           <FiHome size='2rem' />
           <span>Home</span>
         </NavIcon>

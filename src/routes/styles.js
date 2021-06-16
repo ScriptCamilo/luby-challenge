@@ -25,7 +25,7 @@ export const NavBar = styled.nav`
 `;
 
 export const NavIcon = styled(NavLink).attrs(() => ({
-  exact: true,
+  strict: true,
   activeStyle: {
     color: '#3E3E3E',
   }
