@@ -5,8 +5,8 @@ import { getUserFollowers } from './followers';
 import { getUserFollowing } from './following';
 
 const getUserThunk = (userName) => async (dispatch) => {
+  dispatch(requestUser());
   try {
-    dispatch(requestUser());
     const data = await getUserInfo(userName);
     dispatch(getUserSuccess(data));
     

@@ -1,15 +1,18 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { FiHome, FiGithub, FiUsers } from 'react-icons/fi'
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 
 import Login from '../pages/Login';
 import Home from '../pages/Home';
 import Repos from '../pages/Repos';
 import Followers from '../pages/Followers';
+// import FollowersProfile from '../pages/Followers/FollowerProfile'
 import Following from '../pages/Following';
+// import FollowingProfile from '../pages/Following/FollowingProfile'
 
 
-import { Container, MainPage, NavBar, NavIcon } from './styles';
+import { Container, NavBar, NavIcon } from './styles';
 
 const routes = [
   {
@@ -27,19 +30,28 @@ const routes = [
     exact: true,
     component: Followers,
   },
+  // {
+  //   path: "/followers/:login",
+  //   exact: true,
+  //   component: FollowersProfile,
+  // },
   {
     path: "/following",
     exact: true,
     component: Following,
   },
-  {
-    path: "/login",
-    exact: true,
-    component: Login,
-  },
+  // {
+  //   path: "/following/:login",
+  //   exact: true,
+  //   component: FollowingProfile,
+  // },
 ];
 
 function Routes() {
+  const { user: { isLoading, auth }} = useSelector((state) => state);
+
+  if (!auth) return <Login />;
+
   return (
     <Container>
       <Switch>

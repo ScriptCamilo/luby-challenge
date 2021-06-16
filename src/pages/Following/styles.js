@@ -26,7 +26,7 @@ export const Image = styled.figure`
 `;
 
 export const Log = styled(Link).attrs(({ justifycontent }) => ({
-  to: '/user/:login',
+  to: '/following/:login',
 }))`
   display: flex;
   justify-content: space-between;
