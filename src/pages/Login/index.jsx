@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FiArrowRight } from 'react-icons/fi';
 
 import { getUserThunk } from '../../store/actions';
@@ -8,10 +8,12 @@ import { getUserThunk } from '../../store/actions';
 import { Container, Logo, UserName, Required, Button, LoginSection } from './styles';
 
 function Login()  {
-  const [userName, setUserName] = useState('');
-  const [isEmpty, setIsEmpty] = useState(false);
-  const history = useHistory();
   const dispatch = useDispatch();
+  
+  const { error } = useSelector(({ user }) => user);
+  const history = useHistory();
+  const [userName, setUserName] = useState('');
+  const [isEmpty, setIsEmpty] = useState(error);
 
   const handleChange = ({target: { value }}) => {
     setUserName(value)
@@ -22,6 +24,7 @@ function Login()  {
     event.preventDefault();
 
     if (userName === '') {
+      dispatch({type: 'RECEIVED_USER_ERROR', payload: 'Campo obrigatório'})
       return setIsEmpty(true);
     }
     setUserName('');
@@ -41,7 +44,7 @@ function Login()  {
             type='text'
             placeholder='Usuário'
           />
-          {isEmpty ? <Required>Campo obrigatório</Required> : ''}
+          {isEmpty ? <Required>{error}</Required> : ''}
         </UserName>
 
         <Button as="button" onClick={handleSubmit}>

@@ -1,10 +1,13 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
 import { Container } from './styles';
 
-function Header({ children, avatarUrl, count, back, profile, local }) {
+function Header({ children, count, back, profile, local, history }) {
+  const { goBack } = useHistory();
+
   const justifycontent = back || !children ? 'flex-start' : '';
   const styledProps = {profile, back, justifycontent}
 
@@ -13,7 +16,7 @@ function Header({ children, avatarUrl, count, back, profile, local }) {
       {children ? children : (
           <>
             <div>
-              <Link>
+              <Link onClick={ goBack }>
                 <FiArrowLeft size={'1.5rem'} />
               </Link>
             </div>

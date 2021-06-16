@@ -33,6 +33,10 @@ export const Container = styled.header`
 
     span {
       font-weight: 700;
+      max-width: 15ch;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     img {

@@ -15,16 +15,14 @@ export const getUserThunk = (userName) => async (dispatch) => {
   dispatch(requestUser());
   try {
     const data = await getUserInfo(userName);
-    dispatch(getUserSuccess(data));
-    
     const repos = await getUserApis(userName, 'repos');
-    dispatch(getUserRepos(repos));
-
     const followers = await getUserApis(userName, 'followers');
-    dispatch(getUserFollowers(followers));
-
     const following = await getUserApis(userName, 'following');
+    
+    dispatch(getUserRepos(repos));
+    dispatch(getUserFollowers(followers));
     dispatch(getUserFollowing(following));
+    dispatch(getUserSuccess(data));
 
   } catch (error) {
     console.log(error);

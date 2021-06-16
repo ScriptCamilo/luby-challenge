@@ -11,6 +11,7 @@ function user(state = INITIAL_STATE, {type, payload}) {
     case USER:
       return {
         ...state,
+        error: null,
         auth: true,
         isLoading: true,
       };
@@ -18,16 +19,15 @@ function user(state = INITIAL_STATE, {type, payload}) {
       return {
         ...state,
         ...payload,
+        error: null,
         isLoading: false,
       };
     case USER_LOGOUT: 
         return INITIAL_STATE;
     case USER_ERROR:
       return {
-        ...state,
+        ...INITIAL_STATE,
         error: payload,
-        auth: false,
-        isLoading: false,
       };
     default:
       return state;

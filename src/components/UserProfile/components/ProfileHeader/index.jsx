@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { FiLogIn, FiLogOut, FiArrowLeft } from 'react-icons/fi';
 
@@ -9,8 +9,10 @@ import Header from '../../../../components/Header';
 
 function ProfileHeader({ username, avatarUrl, current }) {
   const dispatch = useDispatch();
+  const { goBack } = useHistory();
+  
   const iconSize = '1.5rem';
-
+  
   return (
     <Header
       profile="true"
@@ -20,7 +22,7 @@ function ProfileHeader({ username, avatarUrl, current }) {
         current ? <span>#{username}</span> 
         : (
           <div>
-            <Link>
+            <Link onClick={ goBack }>
               <FiArrowLeft size={iconSize} />
             </Link>
           </div>

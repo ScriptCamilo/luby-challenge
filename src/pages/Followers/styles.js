@@ -35,6 +35,10 @@ export const Log = styled(Link)`
   span {
     font-weight: 700;
     font-size: 1.2rem;
+    max-width: 18ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 `;
 
