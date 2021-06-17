@@ -63,3 +63,10 @@ yarn start or npm start
 ## Related
 
 * [@LubySoftware](https://github.com/lubysoftware/join/tree/react)
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+ 
