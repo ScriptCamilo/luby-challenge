@@ -25,7 +25,9 @@ A PWA to show some basic infos from a GitHub profile.
   
 ## Demo
 
-I will put a demostration soon
+<p align="center">
+  <img src="src/assets/readme/githubprofile.gif"/>
+</p>
 
   
 ## Run Locally
