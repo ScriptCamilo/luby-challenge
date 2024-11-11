@@ -1,5 +1,5 @@
 
-# Luby Join Test
+# GitHub Public Informations
 
 A PWA to show some basic infos from a GitHub profile.
 
@@ -60,12 +60,6 @@ yarn start or npm start
 ## Authors
 
 - [@ScriptCamilo](https://www.github.com/scriptcamilo)
-
-  
-## Related
-
-* [@LubySoftware](https://github.com/lubysoftware/join/tree/react)
-
 
 ## License
 
