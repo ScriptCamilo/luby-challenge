@@ -35,13 +35,13 @@ A PWA to show some basic infos from a GitHub profile.
 Clone the project
 
 ```bash
-git clone git@github.com:ScriptCamilo/join-react.git
+git clone git@github.com:ScriptCamilo/github-infos.git
 ```
 
 Go to the project directory
 
 ```bash
-cd join-react
+cd github-infos
 ```
 
 Install dependencies
